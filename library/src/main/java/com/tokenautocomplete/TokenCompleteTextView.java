@@ -789,12 +789,13 @@ public abstract class TokenCompleteTextView<T> extends MultiAutoCompleteTextView
                 // Display +x thingy if appropriate
                 int lastPosition = lastLayout.getLineVisibleEnd(0);
                 TokenImageSpan[] tokens = text.getSpans(0, lastPosition, TokenImageSpan.class);
-                int count = objects.size() - tokens.length;
+                //int count = objects.size() - tokens.length;
+                int count = objects.size();
 
                 // Make sure we don't add more than 1 CountSpan
                 CountSpan[] countSpans = text.getSpans(0, lastPosition, CountSpan.class);
 
-                if (count > 0 && countSpans.length == 0) {
+                if (count > 2 && countSpans.length == 0) {
                     lastPosition++;
                     CountSpan cs = new CountSpan(count, getContext(), getCurrentTextColor(),
                             (int) getTextSize(), (int) maxTextWidth());
