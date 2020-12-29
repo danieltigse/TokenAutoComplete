@@ -1280,16 +1280,7 @@ public abstract class TokenCompleteTextView<T> extends AppCompatAutoCompleteText
 
         @Override
         public void afterTextChanged(Editable text) {
-            ArrayList<TokenImageSpan> spansCopy = new ArrayList<>(spansToRemove);
             spansToRemove.clear();
-            for (TokenImageSpan token : spansCopy) {
-                //Only remove it if it's still present
-                if (text.getSpanStart(token) != -1 && text.getSpanEnd(token) != -1) {
-                    removeSpan(text, token);
-                }
-
-            }
-
             clearSelections();
             updateHint();
         }
